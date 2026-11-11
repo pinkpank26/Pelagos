@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Пелагос — интерактивный атлас пяти зон океана, от солнечных вод до глубоководных желобов.">
+<meta name="theme-color" content="#061421">
+<title>Пелагос — Атлас глубин</title>
+<link rel="stylesheet" href="style.css?v=fullscreen">
+<script src="atlas.js" defer></script>
+</head>
+<body>
+<div class="site">
+<header class="top">
+  <a class="brand" href="./" aria-label="Пелагос, на главную"><span class="mark" aria-hidden="true">≋</span> Пелагос</a>
+  <span class="edition">Атлас океана</span>
+  <button class="info" id="about" type="button">О проекте <span aria-hidden="true">↗</span></button>
+</header>
+<main>
+<section class="dive" aria-label="Интерактивное погружение">
+  <div class="scenes" aria-hidden="true">
+    <img class="scene current" src="surface.jpg?v=fullscreen" alt="" fetchpriority="high">
+    <img class="scene" src="twilight.jpg?v=fullscreen" alt="">
+    <img class="scene" src="midnight.jpg?v=fullscreen" alt="">
+    <img class="scene" src="abyss.jpg?v=fullscreen" alt="">
+    <img class="scene" src="trench.jpg?v=fullscreen" alt="">
+  </div>
+  <div class="scrim"></div>
+  <div class="transit" id="transit" aria-hidden="true">
+    <div class="water-light"></div>
+    <canvas id="water-particles"></canvas>
+    <div class="transit-reading">
+      <span id="transit-direction">Погружение</span>
+      <strong><span id="transit-depth">0</span> <small>м</small></strong>
+      <div class="transit-track"><div id="transit-progress"></div></div>
+    </div>
+  </div>
+  <div class="intro" aria-live="polite" aria-atomic="true">
+    <div class="kicker"><span></span><span id="zone">Эпипелагиаль</span></div>
+    <h1 id="title">Там, где<br>есть свет</h1>
+    <p id="description">Первые 200 метров океана. Здесь солнечный свет питает планктон, а у поверхности можно встретить горбатого кита.</p>
+    <button class="descend" id="next" type="button"><span id="action">Погрузиться глубже</span><span id="direction" aria-hidden="true">↓</span></button>
+  </div>
+  <div class="subject">
+    <span class="subject-line" aria-hidden="true"></span>
+    <span><strong id="animal">Горбатый кит</strong><em id="latin">Megaptera novaeangliae</em></span>
+  </div>
+  <nav class="soundings" aria-label="Шкала глубины">
+    <p>Глубина, м</p>
+    <ol>
+      <li><button data-zone="0" aria-label="Солнечная зона, 0 метров" aria-current="step">0</button></li>
+      <li><button data-zone="1" aria-label="Зона сумерек, 200 метров">200</button></li>
+      <li><button data-zone="2" aria-label="Зона полуночи, 1 000 метров">1 000</button></li>
+      <li><button data-zone="3" aria-label="Абиссаль, 4 000 метров">4 000</button></li>
+      <li><button data-zone="4" aria-label="Океанические желоба, 6 000 метров">6 000</button></li>
+    </ol>
+  </nav>
+  <div class="instrument">
+    <div class="reading"><span>Зона глубины</span><strong id="range">0–200 м</strong></div>
+    <div class="reading"><span>Солнечный свет</span><strong id="light">Достаточно для фотосинтеза</strong></div>
+    <div class="count"><span id="count">01</span><span class="separator"></span>05</div>
+  </div>
+</section>
+</main>
+<footer><span>Пелагос <span class="muted">/</span> Интерактивный атлас</span><a href="https://oceanservice.noaa.gov/facts/light_travel.html" target="_blank" rel="noopener">Данные о глубинах · NOAA ↗</a></footer>
+</div>
+<dialog id="project" aria-labelledby="project-title">
+  <div class="dialog-top"><span>Пелагос</span><form method="dialog"><button type="submit" aria-label="Закрыть">×</button></form></div>
+  <h2 id="project-title">Пять зон океана</h2>
+  <p>«Пелагос» — концепт интерактивного атласа. Выберите отметку глубины, чтобы увидеть, как меняются свет и жизнь под водой.</p>
+  <p>Границы зон взяты из материалов NOAA. Сцены с животными сгенерированы для этого проекта.</p>
+  <a href="https://oceanservice.noaa.gov/facts/light_travel.html" target="_blank" rel="noopener">Читать о зонах океана ↗</a>
+</dialog>
+</body>
+</html>
